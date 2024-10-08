@@ -132,6 +132,12 @@ fn run_app<B: Backend>(terminal: &mut Terminal<B>, mut app: App) -> io::Result<(
                     }
                     Char('b') if key.modifiers.contains(KeyModifiers::CONTROL) => {
                         app.tui.process_details_up()
+                    } 
+                    Char('h') if key.modifiers.contains(KeyModifiers::CONTROL) => {
+                        terminal.clear()?;
+                         terminal.draw(|f| app.tui.render_keybindings(f))?;
+
+                        ()
                     }
                     Char(to_insert) => app.enter_char(to_insert),
                     Backspace => app.delete_char(),

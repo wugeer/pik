@@ -3,4 +3,3 @@ pub mod config;
 pub mod processes;
 pub mod settings;
 pub mod tui;
-pub mod popups;
